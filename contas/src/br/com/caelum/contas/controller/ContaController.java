@@ -1,5 +1,6 @@
 package br.com.caelum.contas.controller;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -41,6 +42,14 @@ public class ContaController {
 		return  mv;
 		
 	}
+	
+	@RequestMapping("/pagaConta")
+	public void pagarConta(Long id, HttpServletResponse response){
+		ContaDAO dao = new ContaDAO();
+		dao.paga(id);
+		response.setStatus(200);
+	};
+	
 	
 //	@RequestMapping("/listaContas")
 //	public String lista(Model mv) {
